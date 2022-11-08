@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+	<title>PeluCan - Portal de peluquerias caninas</title>
+	<link rel="shortcut icon" href= "{% static 'logo.png' %} ">
+	<meta name="viewport" content="width=device-width">
+	<link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" href="{% static 'normalize.css' %}">
+	<link rel="stylesheet" type="text/css" href= "{% static 'style.css' %}">
+	
+</head>
+<body>
+
+	<header class="main-head">
+		<nav class="main">
+			<!-- <img id="imagen_logo" src= {% static 'logo.png' %} alt="logo"/> -->
+			<h1 id="logo">PeluCan</h1>
+			<ul>
+				{% if request.user.is_authenticated %}
+				<li><a href="{% url 'logout' %}">Logout</a></li>
+				<li><a class="profile" href="{% url 'profile' request.user.username %}">Mi Perfil</a></li>
+				{% else %}
+				<li><a href="{% url 'register' %}">Registrarse</a></li>
+				<li><a href="{% url 'login' %}">Iniciar Sesion
+				</a></li>
+				{% endif %}
+			</ul>
+		</nav>
+	</header>
+
+	{% if messages %}
+		{% for message in messages %}
+		<div class="notification {{ message.tags}}">
+			{{ message }}
+		</div>
+		{% endfor %}
+	{% endif %}
+
+	<!-------------------------------------
+					Navigation Bar 
+	-------------------------------------->
+	<div class="main">
+		
+		<nav class="second-nav">
+			<a class="feed" href="{% url 'feed' %}">Inicio</a>
+			<a class="feed" href="{% url 'feed' %}">Peluquerias a domicilio</a>
+			{% if request.user.is_authenticated and request.user.username is username%}
+			<a class="new" href="{% url 'post' %}">Nueva publicación</a>
+			{% endif %}
+		</nav>
+
+
+		{% block content %}
+
+		{% endblock content %}
+
+
+
+	</div>
+
+	<footer>
+		<div class="row">
+			<p>PELUCAN, Peluquerias Caninas,<br>hecha por <a href="http://www.gorkaurzelai.com">Gorka Urzelai</a></p>
+		</div>
+	</footer>
+
+</body>
+</html>
