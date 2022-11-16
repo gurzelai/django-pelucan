@@ -6,9 +6,23 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 
-def feed(request):
+def index(request):
 
-	return render(request, 'social/feed.html', {})
+	return render(request, 'social/index.html', {})
+
+def peluquerias(request):
+
+	peluquerias = Peluqueria.objects.all()
+	context = { 'peluquerias': peluquerias}
+
+	return render(request, 'social/peluquerias.html', context)
+
+def peluquerias_a_domicilio(request):
+
+	peluquerias = Peluqueria.objects.all()
+	context = { 'peluquerias': peluquerias}
+	
+	return render(request, 'social/peluquerias.html', context)
 
 def register(request):
 	if request.method == 'POST':

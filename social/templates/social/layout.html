@@ -5,65 +5,59 @@
 	<title>PeluCan - Portal de peluquerias caninas</title>
 	<link rel="shortcut icon" href= "{% static 'logo.png' %} ">
 	<meta name="viewport" content="width=device-width">
-	<link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+	<!--<link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" type="text/css" href="{% static 'normalize.css' %}">
-	<link rel="stylesheet" type="text/css" href= "{% static 'style.css' %}">
-	
+	<link rel="stylesheet" type="text/css" href= "{% static 'style.css' %}">-->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    {% block initial_styles %}
+    {% endblock %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>	
+    {% block initial_scripts %}
+    {% endblock %}
 </head>
 <body>
 
-	<header class="main-head">
-		<nav class="main">
-			<!-- <img id="imagen_logo" src= {% static 'logo.png' %} alt="logo"/> -->
-			<h1 id="logo">PeluCan</h1>
-			<ul>
-				{% if request.user.is_authenticated %}
-				<li><a href="{% url 'logout' %}">Logout</a></li>
-				<li><a class="profile" href="{% url 'profile' request.user.username %}">Mi Perfil</a></li>
-				{% else %}
-				<li><a href="{% url 'register' %}">Registrarse</a></li>
-				<li><a href="{% url 'login' %}">Iniciar Sesion
-				</a></li>
-				{% endif %}
-			</ul>
-		</nav>
-	</header>
+	<header class="p-3 text-bg-dark">
+        <div class="container">
+            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
 
-	{% if messages %}
-		{% for message in messages %}
-		<div class="notification {{ message.tags}}">
-			{{ message }}
-		</div>
-		{% endfor %}
-	{% endif %}
 
-	<!-------------------------------------
-					Navigation Bar 
-	-------------------------------------->
-	<div class="main">
-		
-		<nav class="second-nav">
-			<a class="feed" href="{% url 'feed' %}">Inicio</a>
-			<a class="feed" href="{% url 'feed' %}">Peluquerias a domicilio</a>
-			{% if request.user.is_authenticated and request.user.username is username%}
-			<a class="new" href="{% url 'post' %}">Nueva publicación</a>
-			{% endif %}
-		</nav>
+                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                    <li><a href={% url 'index' %} class="nav-link px-2 text-secondary">Inicio</a></li>
+                    <li><a href={% url 'peluquerias' %} class="nav-link px-2 text-white">Peluquerias caninas</a></li>
+                    <li><a href={% url 'peluquerias_a_domicilio' %} class="nav-link px-2 text-white">Peluquerias a domicilio</a></li>
+                </ul>
 
+                {% comment %}<form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+                    <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Ubicacion..." aria-label="Search">
+                </form>{% endcomment %}
+
+                <div class="text-end">
+                    <a href={% url 'login' %}><button type="button" class="btn btn-outline-light me-2">Iniciar sesón</button></a>
+                    <a href={% url 'register' %}><button type="button" class="btn btn-warning">Registrarse</button></a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+	<main>
 
 		{% block content %}
 
 		{% endblock content %}
 
+	</main>
 
-
-	</div>
-
-	<footer>
+	<!--<footer>
 		<div class="row">
 			<p>PELUCAN, Peluquerias Caninas,<br>hecha por <a href="http://www.gorkaurzelai.com">Gorka Urzelai</a></p>
 		</div>
-	</footer>
+	</footer>-->
 
+    {% block final_scripts %}
+
+    {% endblock final_scripts %}
 </body>
+
+
 </html>
