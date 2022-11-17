@@ -2,6 +2,12 @@
 
 {% block content %}
 
+{% if mensaje %}
+<h1 style="text-align: center">{{mensaje}}</h1>
+{% else %}
 <h1 style="text-align: center">Has cerrado sesión</h1>
+{% endif %}
+
+<a href={% url 'peluquerias' %}><button type="button" class="btn btn-primary center">Ver peluquerias</button></a>
 
 {% endblock %}

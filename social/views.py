@@ -7,7 +7,6 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 
 def index(request):
-
 	return render(request, 'social/index.html', {})
 
 def peluquerias(request):
@@ -31,7 +30,7 @@ def register(request):
 			form.save()
 			username = form.cleaned_data['username']
 			messages.success(request, f'Usuario {username} creado')
-			return redirect('index') #aquí habría que poner la pagina de editar perfil
+			return redirect('index') #no se logea automaticamente y va a la pantalla de inicio
 	else:
 		form = UserForm()
 
@@ -41,7 +40,8 @@ def register(request):
 def peluqueria(request, username=None):
 	current_user = request.user
 	if username==None and request.user.is_authenticated == False: #no le vamos a dejar en "Tu perfil" si no estás logeado
-		return HttpResponse("no estás logeado")
+		context = { 'mensaje': 'No estás logeado'}
+		return render(request, 'social/logout.html', context)
 	if username and username != current_user.username: #el perfil de otra persona
 		user = User.objects.get(username=username)
 		tu_perfil = False

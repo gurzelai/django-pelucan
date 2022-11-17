@@ -4,7 +4,7 @@ from django.utils import timezone
 
 class Peluqueria(models.Model):
 	user = models.OneToOneField(User, on_delete=models.CASCADE)
-	nombre_de_la_peluqueria = models.CharField(max_length=150, blank=False, null=False, default='Peluqueria 1')
+	nombre_de_la_peluqueria = models.CharField(max_length=150, blank=False, null=False, default='Nombre de la peluqueria')
 	image = models.ImageField(default='batman.png')
 	email = models.EmailField(max_length=150, blank=False, null=False)
 	telefono = models.CharField(max_length=13, blank=True, null=True)
@@ -16,7 +16,7 @@ class Peluqueria(models.Model):
 	servicio_a_domicilio = models.BooleanField(default=False)
 
 	def __str__(self):
-		return f'Perfil de {self.user.username}'
+		return f'Peluquería de {self.user.username}'
 
 
 
