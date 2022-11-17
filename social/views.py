@@ -19,7 +19,7 @@ def peluquerias(request):
 
 def peluquerias_a_domicilio(request):
 
-	peluquerias = Peluqueria.objects.all()
+	peluquerias = Peluqueria.objects.filter(servicio_a_domicilio=True)
 	context = { 'peluquerias': peluquerias}
 	
 	return render(request, 'social/peluquerias.html', context)
@@ -38,15 +38,15 @@ def register(request):
 	context = { 'form' : form }
 	return render(request, 'social/register.html', context)
 
-def profile(request, username=None):
+def peluqueria(request, username=None):
 	current_user = request.user
-	if username==None and request.user.is_authenticated == False:
+	if username==None and request.user.is_authenticated == False: #no le vamos a dejar en "Tu perfil" si no estás logeado
 		return HttpResponse("no estás logeado")
-	if username and username != current_user.username:
-		user = User.objects.get(username=username) #el perfil de otra persona
-		
-	else:
+	if username and username != current_user.username: #el perfil de otra persona
+		user = User.objects.get(username=username)
+		tu_perfil = False
+	else: #si estás entrando a ver tu perfil
 		user = current_user
 		username = user.username
-
-	return render(request, 'social/profile.html', {'user':user, 'username':username})
+		tu_perfil = True
+	return render(request, 'social/profile.html', {'user':user, 'username':username, 'tu_perfil':tu_perfil})

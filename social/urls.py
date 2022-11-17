@@ -7,8 +7,8 @@ from django.contrib.auth.views import LoginView, LogoutView
 
 urlpatterns = [
 	path('', views.index, name='index'),
-	path('profile/', views.profile, name='profile'),
-	path('profile/<str:username>/', views.profile, name='profile'),  #ver perfil de otro http://127.0.0.1:8000/profile/goku/
+	path('peluqueria/', views.peluqueria, name='peluqueria'),
+	path('peluqueria/<str:username>/', views.peluqueria, name='peluqueria'),  #ver perfil de otro http://127.0.0.1:8000/profile/goku/
 	path('register/', views.register, name='register'),
 	path('login/', LoginView.as_view(template_name='social/login.html'), name='login'),
 	path('logout/', LogoutView.as_view(template_name='social/logout.html'), name='logout'),
