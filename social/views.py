@@ -31,7 +31,7 @@ def register(request):
 			form.save()
 			username = form.cleaned_data['username']
 			messages.success(request, f'Usuario {username} creado')
-			return redirect('feed') #aquí habría que poner la pagina de editar perfil
+			return redirect('index') #aquí habría que poner la pagina de editar perfil
 	else:
 		form = UserForm()
 
@@ -49,4 +49,4 @@ def peluqueria(request, username=None):
 		user = current_user
 		username = user.username
 		tu_perfil = True
-	return render(request, 'social/profile.html', {'user':user, 'username':username, 'tu_perfil':tu_perfil})
+	return render(request, 'social/peluqueria.html', {'user':user, 'username':username, 'tu_perfil':tu_perfil})

@@ -1,0 +1,232 @@
+{% extends 'social/layout.html' %}
+{% block content %}
+
+<!-- Profile -->
+<section style="background-color: #eee;">
+	<div class="container py-5">
+		<div class="row">
+			<div class="col-lg-4">
+				<div class="card mb-4">
+					<div class="card-body text-center">
+						{% load static %}<img src={% static 'aqui meter la imagen' %} alt="avatar" class="img-fluid">
+						<h5 class="my-3">{{user.username}}</h5>
+						<p class="text-muted mb-1">Bergara, Matxiategi 38 2.B</p>
+						<p class="text-muted mb-4">Guipúzcoa</p>
+						<!--<div class="d-flex justify-content-center mb-2">
+							<button type="button" class="btn btn-primary">Follow</button>
+							<button type="button" class="btn btn-outline-primary ms-1">Escribir mensaje</button>
+						</div>-->
+					</div>
+					<div class="mb-2 d-flex justify-content-center">
+						<a class="btn btn-primary mx-1" style="background-color: #3b5998; border: 0;" href="#!" role="button"><i class="fab fa-facebook-f"></i></a>
+						<a class="btn btn-primary mx-1" style="background-color: #FF0000; border: 0" href="#!" role="button"><i class="fab fa-youtube"></i></a>
+						<a class="btn btn-primary mx-1" style="background-color: #4c68d7; border: 0" href="#!" role="button"><i class="fab fa-instagram"></i></a>
+						<a class="btn btn-primary mx-1" style="background-color: #128c7e; border: 0" href="#!" role="button"><i class="fab fa-whatsapp"></i></a>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-lg-8">
+				<div class="card mb-2">
+					<div class="card-body">
+						<div class="row">
+							<div class="col-sm-4">
+								<p class="mb-0">Nombre de la peluqueria</p>
+							</div>
+							<div class="col-sm-8">
+								<p class="text-muted mb-0">{{ user.peluqueria.nombre_de_la_peluqueria }}</p>
+							</div>
+						</div>
+						<hr>
+						<div class="row">
+							<div class="col-sm-4">
+								<p class="mb-0">Email</p>
+							</div>
+							<div class="col-sm-8">
+								<p class="text-muted mb-0">{{ user.peluqueria.email }}</p> {% comment "nota" %}esto será para el contacto, no el de registro{% endcomment %}
+							</div>
+						</div>
+						<hr>
+						<div class="row">
+							<div class="col-sm-4">
+								<p class="mb-0">Telefono</p>
+							</div>
+							<div class="col-sm-8">
+								<p class="text-muted mb-0">{{ user.peluqueria.telefono }}</p>
+							</div>
+						</div>
+						<hr>
+						<div class="row">
+							<div class="col-sm-4">
+								<p class="mb-0">Provincia</p>
+							</div>
+							<div class="col-sm-8">
+								<p class="text-muted mb-0">{{ user.peluqueria.provincia }}</p>
+							</div>
+						</div>
+						<hr>
+						<div class="row">
+							<div class="col-sm-4">
+								<p class="mb-0">Municipio</p>
+							</div>
+							<div class="col-sm-8">
+								<p class="text-muted mb-0">{{ user.peluqueria.municipio }}</p>
+							</div>
+						</div>
+						<hr>
+						<div class="row">
+							<div class="col-sm-4">
+								<p class="mb-0">Dirección</p>
+							</div>
+							<div class="col-sm-8">
+								<p class="text-muted mb-0">{{ user.peluqueria.direccion }}</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="card mb-2">
+					<div class="card-body">
+						<div class="row">
+							<div class="col-sm-4">
+								<p class="mb-0">Cita previa</p>
+							</div>
+							<div class="col-sm-8">
+								<p class="text-muted mb-0">{{ user.peluqueria.cita_previa }}</p>
+							</div>
+						</div>
+						<hr>
+						<div class="row">
+							<div class="col-sm-4">
+								<p class="mb-0">Servicio a domicilio</p>
+							</div>
+							<div class="col-sm-8">
+								<p class="text-muted mb-0">{{ user.peluqueria.servicio_a_domicilio }}</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+
+				<div class="row">
+					<div class="col-md-6 mb-2">
+						<div class="card text-black mb-4 mb-md-0">
+							<div class="card-body">
+								<div class="text-center">
+									<h5 class="card-title">Horario</h5>
+								</div>
+								<div>
+									<div class="d-flex justify-content-between">
+										<span>Lunes - Viernes</span><span>9:30 - 14:00</span>
+									</div>
+									<div class="d-flex justify-content-between">
+										<span>Sabado</span><span>Cerrado</span>
+									</div>
+									<div class="d-flex justify-content-between">
+										<span>Domingo</span><span>Cerrado</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6 mb-2">
+						<div class="card text-black mb-4 mb-md-0">
+							<div class="card-body">
+								<div class="text-center">
+									<h5 class="card-title">Servicios</h5>
+								</div>
+								<div>
+									<div class="d-flex justify-content-between">
+										<span>Lavado</span><span>$5,999</span>
+									</div>
+									<div class="d-flex justify-content-between">
+										<span>Alisado</span><span>$999</span>
+									</div>
+									<div class="d-flex justify-content-between">
+										<span>Corte de pelo</span><span>$199</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6 mb-2">
+						<div class="card text-black mb-4 mb-md-0">
+							<div class="card-body">
+								<div class="text-center">
+									<h5 class="card-title">Tamaños</h5>
+								</div>
+								<div>
+									<div class="d-flex justify-content-between">
+										<span>Grande</span>
+										<div><img src="media/svg/Boton-mal.svg" alt="Cargando..." width="20" height="20" /></div>
+									</div>
+									<div class="d-flex justify-content-between">
+										<span>Mediano</span>
+										<div><img src="media/svg/Boton-correcto.svg" alt="Cargando..." width="20" height="20" /></div>
+
+									</div>
+									<div class="d-flex justify-content-between">
+										<span>Pequeño</span>
+										<div><img src="media/svg/Boton-correcto.svg" alt="Cargando..." width="20" height="20" /></div>
+
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div>
+			<h5 class="text-decoration-underline">Ubicacion</h5>
+			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2909.182137122422!2d-2.4704409!3d43.184689000000006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4e2bbe9689668d%3A0x2f823dee4e24411d!2sPeluqueria%20canina%20%2B%20QWapos!5e0!3m2!1ses!2sse!4v1668301665533!5m2!1ses!2sse"
+				width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+		</div>
+
+	</div>
+
+</section>
+
+
+{% comment %}
+	
+
+
+<div class="profile">
+	<img src="{{ user.profile.image.url }}">
+	<h2>@{{ user.username }}</h2> <!--user.profile.user también funciona-->
+
+	{% if request.user.is_authenticated %}
+		{% if user.username != request.user.username %}
+			{% if user not in request.user.profile.following %}
+			<button><a class="follow-button" href="{% url 'follow' user %}">Follow</a></button>
+			{% else %}
+			<button><a class="follow-button" href="{% url 'unfollow' user %}">Unfollow</a></button>
+			{% endif %}
+		{% endif %}
+	{% endif %}
+	
+	
+</div>
+
+<!-- Follow items -->
+<div class="follow">
+	<div>
+		<h5>Post</h5>
+		<p>{{ user.posts.count }}</p>
+	</div>
+	<div>
+		<h5>Followers</h5>
+		<p>{{ user.profile.followers.count }}</p>
+
+	</div>
+	<div>
+		<h5>Following</h5>
+		<p>{{ user.profile.following.count }}</p>
+	</div>
+</div>
+{% endcomment %}
+
+{{ block.super }} <!-- sin esto no se muestran las publicaciones-->
+{% endblock %}
